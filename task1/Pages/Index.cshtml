@@ -1,0 +1,169 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+</div>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+             <th>
+                @Html.DisplayNameFor(model => model.filter[0].id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.filter[0].fempname) 
+            </th>
+           <th>
+                @Html.DisplayNameFor(model => model.filter[0].hiredate) 
+            </th>
+<th>
+                @Html.DisplayNameFor(model => model.filter[0].gender) 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.filter[0].deptname) 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.filter[0].title) 
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.filter)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.fempname) @Html.DisplayFor(modelItem => item.mempname) @Html.DisplayFor(modelItem => item.lempname) 
+            </td>
+           <td>
+                @Html.DisplayFor(modelItem => item.hiredate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gender)
+            </td><td>
+                @Html.DisplayFor(modelItem => item.deptname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+           
+         
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome B</h1>
+
+</div>
+<table class="table">
+    <thead>
+        <tr>
+             <th>
+                @Html.DisplayNameFor(model => model.tofemps[0].deptid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tofemps[0].deptname) 
+            </th>
+           <th>
+                @Html.DisplayNameFor(model => model.tofemps[0].total) 
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.tofemps)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.deptid)
+            </td>
+            
+           <td>
+                @Html.DisplayFor(modelItem => item.deptname)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+         
+        </tr>
+}
+    </tbody>
+</table>
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome C</h1>
+
+</div>
+<table class="table">
+    <thead>
+        <tr>
+             <th>
+                @Html.DisplayNameFor(model => model.shift1[0].shiftid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shift1[0].shiftname) 
+            </th>
+           <th>
+                @Html.DisplayNameFor(model => model.shift1[0].statrttime) 
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.shift1[0].endtime) 
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.shift1[0].empname) 
+            </th>
+            <th>
+                <th>
+                @Html.DisplayNameFor(model => model.shift1[0].emptitle) 
+            </th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.shift1)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.shiftid)
+            </td>
+            
+           <td>
+                @Html.DisplayFor(modelItem => item.shiftname)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.statrttime)
+            </td>
+           <td>
+                @Html.DisplayFor(modelItem => item.endtime)
+            </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.empname)
+            </td>
+            
+              <td>
+                @Html.DisplayFor(modelItem => item.emptitle)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
