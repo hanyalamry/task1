@@ -27,7 +27,24 @@ public List<shifts> shift1 { get; set; }
     public async Task OnGetAsync ()
     {
     
+  var employee= _context.Employees.Include(b=>b.BusinessEntity).Include(c=>c.EmployeeDepartmentHistories)
+  .Select(b=>new{employeeid=b.BusinessEntityId,
+  name=b.BusinessEntity.FirstName,gender=b.Gender,hiredate=b.HireDate,
+  dept=b.EmployeeDepartmentHistories.Select(b=>new {
+    empdeptcurrent=b.Department.Name
+  }).FirstOrDefault()}).ToList();
   
+  var alldeps=_context.Departments.Include(c=>c.EmployeeDepartmentHistories)
+  .Select( b=> new{deptid=b.DepartmentId,deptname=b.Name,total=b.EmployeeDepartmentHistories.GroupBy(b=>b.BusinessEntityId).Select(b=>new{c=b.Key})}).ToList();
+
+
+
+var allshift=_context.EmployeeDepartmentHistories.Include(e=>e.Shift).Select(b=>new{shiftid=b.ShiftId,shiftname=b.Shift.Name,stime=b.Shift.StartTime
+,etime=b.Shift.EndTime,emp=b.BusinessEntity.EmployeeDepartmentHistories.Select(b=>new{empdeptcurrent=b.Department.Name}).FirstOrDefault(),emname=
+b.BusinessEntity.BusinessEntity.BusinessEntity.Person.FirstName
+}).ToList();
+
+
    filter= await (from emp in _context.Employees
     join person in _context.People
        on emp.BusinessEntityId equals person.BusinessEntityId
